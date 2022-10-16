@@ -8,7 +8,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import MowscowWeather
+from .models import MoscowWeather
 from .utils import OpenWeather
 
 
@@ -16,7 +16,7 @@ class CurrentWeatherView(APIView):
     def get(self, request, *args, **kwargs):
         start_dt = datetime.now()
         end_dt = start_dt - timedelta(minutes=60)
-        current_temp = MowscowWeather.objects.filter(
+        current_temp = MoscowWeather.objects.filter(
             datetime__lte=start_dt,
             datetime__gte=end_dt
         ).values('temperature').order_by('-datetime').first()
@@ -31,7 +31,7 @@ class CurrentWeatherView(APIView):
 
 class HistoryWeatherView(APIView):
     def get(self, request, *args, **kwargs):
-        period = MowscowWeather.objects.aggregate(start_period=Min('date'), end_period=Max('date'))
+        period = MoscowWeather.objects.aggregate(start_period=Min('date'), end_period=Max('date'))
         if not any(period.values()):
             return Response(status=status.HTTP_404_NOT_FOUND)
         cursor = connection.cursor()

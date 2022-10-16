@@ -6,7 +6,7 @@ from conf.settings import (API_ERROR, CITY, CONNECTION_ERROR, OUT_API_ERROR,
 from rest_framework import status
 from rest_framework.exceptions import APIException
 
-from .models import MowscowWeather
+from .models import MoscowWeather
 
 logger = logging.getLogger()
 
@@ -21,7 +21,7 @@ logging.basicConfig(
 class OpenWeather:
     @staticmethod
     def _save_to_db(temperature: float) -> dict:
-        MowscowWeather.objects.create(temperature=temperature)
+        MoscowWeather.objects.create(temperature=temperature)
         return {
             'temperature': temperature
         }

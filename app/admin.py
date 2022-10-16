@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from .models import MowscowWeather
+from .models import MoscowWeather
 
-admin.site.register(MowscowWeather)
+admin.site.register(MoscowWeather)

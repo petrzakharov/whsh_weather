@@ -3,7 +3,7 @@ from django.db import models
 from django_cte import CTEManager
 
 
-class MowscowWeather(models.Model):
+class MoscowWeather(models.Model):
     objects = CTEManager()
     date = models.DateField(auto_now_add=True)
     datetime = models.DateTimeField(auto_now_add=True, unique=True)
